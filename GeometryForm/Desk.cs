@@ -23,6 +23,7 @@ namespace GeometryForm
         public Desk()
         {
             InitializeComponent();
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
 
         private void Desk_Load(Object sender, EventArgs e)

@@ -314,6 +314,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Desk";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Triangle Geometry";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Desk_FormClosed);
             this.Load += new System.EventHandler(this.Desk_Load);
