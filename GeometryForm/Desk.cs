@@ -56,12 +56,12 @@ namespace GeometryForm
 
         private void canvas_Paint(object sender, PaintEventArgs e)
         {
-            
             Console.WriteLine("On paint from  "  + sender);
         }
 
         private void canvas_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button != MouseButtons.Left) return;
             vertexCount++;
             vertex.Width  = 2;
             vertex.Height = 2;

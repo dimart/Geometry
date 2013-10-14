@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.ExceptionServices;
 
 
 namespace libgeom
@@ -36,7 +37,9 @@ namespace libgeom
 
         public bool IsRectangular()
         {
-            return (Math.Pow(m_c, 2) == Math.Pow(m_a, 2) + Math.Pow(m_b, 2));
+            return (m_c * m_c == m_a * m_a + m_b * m_b ||
+                   m_a * m_a == m_c * m_c + m_b * m_b ||
+                   m_b * m_b == m_a * m_a + m_c * m_c);
         }
 
         public bool PointInTriangle(int ptx, int pty)
