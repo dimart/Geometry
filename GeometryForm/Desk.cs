@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using libgeom;
@@ -22,6 +24,8 @@ namespace GeometryForm
 
         public Desk()
         {
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+            //Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ru-RU");
             InitializeComponent();
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
@@ -42,9 +46,7 @@ namespace GeometryForm
             switch (e.KeyCode)
             {
                 case Keys.D:
-                    this.debugCheckBox.Visible = !this.debugCheckBox.Visible;
-                    break;
-                default:
+                    debugCheckBox.Visible = !debugCheckBox.Visible;
                     break;
             }
         }
@@ -198,7 +200,10 @@ namespace GeometryForm
             int A = Convert.ToInt32(firstSideTB.Text);
             int B = Convert.ToInt32(secondSideTB.Text);
             int C = Convert.ToInt32(thirdSideTB.Text);
-            if (A == 0 || B == 0 || C == 0) { MessageBox.Show("There is no triangle with a zero side in the world."); return; }
+            if (A == 0 || B == 0 || C == 0)
+            {
+                MessageBox.Show(Strings.ZeroLenghtError); return; 
+            }
             triangle = new Triangle(A, B, C);
             if (triangle.IsEquilateral()) eqCheck.Visible = true;
             if (triangle.IsRectangular()) recCheck.Visible = true;
